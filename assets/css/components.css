@@ -205,6 +205,31 @@
 
 .header-cta { display: none; }
 
+/* Language switcher: always visible, keeps you on the same page */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  color: var(--forest);
+  font-size: var(--step--1);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--dur-ui), color var(--dur-ui), border-color var(--dur-ui);
+}
+.lang-switch:hover { background: var(--forest); border-color: var(--forest); color: var(--on-forest); }
+.lang-switch:lang(gu) { font-family: 'Hind Vadodara', var(--font-sans); font-weight: 600; }
+@media (max-width: 1079px) {
+  .brand { order: 0; }
+  .lang-switch { order: 1; margin-left: auto; }
+  .nav-toggle { order: 2; }
+  .nav { order: 3; }
+  .site-header__inner { gap: var(--space-3); }
+}
+
 /* Mobile: without JS the nav simply wraps under the logo; with JS it collapses. */
 @media (max-width: 1079px) {
   .site-header__inner { flex-wrap: wrap; }

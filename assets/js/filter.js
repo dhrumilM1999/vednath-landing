@@ -1,5 +1,6 @@
 // filter.js: category buttons and a search box for the conditions grid.
 // Without JS every card is visible, so nothing is lost.
+import { t } from './i18n.js';
 
 document.querySelectorAll('[data-filter]').forEach((root) => {
   const buttons = [...root.querySelectorAll('[data-cat-btn]')];
@@ -22,8 +23,8 @@ document.querySelectorAll('[data-filter]').forEach((root) => {
       if (show) shown++;
     });
     if (count) count.textContent = shown === cards.length
-      ? `Showing all ${shown} condition groups.`
-      : `Showing ${shown} of ${cards.length} condition groups.`;
+      ? t({ en: `Showing all ${shown} condition groups.`, gu: `બધા ${shown} રોગ-જૂથ બતાવી રહ્યા છીએ.` })
+      : t({ en: `Showing ${shown} of ${cards.length} condition groups.`, gu: `${cards.length} માંથી ${shown} રોગ-જૂથ બતાવી રહ્યા છીએ.` });
   };
 
   buttons.forEach((btn) => btn.addEventListener('click', () => {

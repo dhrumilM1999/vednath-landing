@@ -2,25 +2,58 @@
 // sends nothing anywhere. Shows one question at a time, works fully by keyboard,
 // and announces progress and the result to screen readers.
 
-const INFO = {
-  vata: {
-    name: 'Vata',
-    elements: 'Air + Space',
-    text: 'Light, quick and creative. When Vata is out of balance, Ayurveda describes dryness, gas and bloating, an anxious mind and light, broken sleep.',
-    tips: ['A regular daily routine', 'Warm, freshly cooked, slightly oily food', 'Warm oil massage (Abhyanga)', 'Early, unhurried bedtimes'],
+import { lang, t } from './i18n.js';
+
+const INFO_ALL = {
+  en: {
+    vata: {
+      name: 'Vata',
+      elements: 'Air + Space',
+      text: 'Light, quick and creative. When Vata is out of balance, Ayurveda describes dryness, gas and bloating, an anxious mind and light, broken sleep.',
+      tips: ['A regular daily routine', 'Warm, freshly cooked, slightly oily food', 'Warm oil massage (Abhyanga)', 'Early, unhurried bedtimes'],
+    },
+    pitta: {
+      name: 'Pitta',
+      elements: 'Fire + Water',
+      text: 'Sharp, focused and warm. When Pitta is out of balance, Ayurveda describes acidity, irritability, excess heat and skin that flares easily.',
+      tips: ['Never skip meals', 'Cooling foods and drinks, not ice-cold ones', 'Avoiding the midday sun and very spicy food', 'Time to unwind in the evening'],
+    },
+    kapha: {
+      name: 'Kapha',
+      elements: 'Earth + Water',
+      text: 'Steady, calm and strong. When Kapha is out of balance, Ayurveda describes heaviness, slow digestion, congestion and a tendency to gain weight.',
+      tips: ['Light, warm meals with spices like ginger', 'Daily vigorous exercise', 'Rising early, avoiding daytime naps', 'Variety and new activity'],
+    },
   },
-  pitta: {
-    name: 'Pitta',
-    elements: 'Fire + Water',
-    text: 'Sharp, focused and warm. When Pitta is out of balance, Ayurveda describes acidity, irritability, excess heat and skin that flares easily.',
-    tips: ['Never skip meals', 'Cooling foods and drinks, not ice-cold ones', 'Avoiding the midday sun and very spicy food', 'Time to unwind in the evening'],
+  gu: {
+    vata: {
+      name: 'વાત',
+      elements: 'વાયુ + આકાશ',
+      text: 'હળવા, ઝડપી અને સર્જનાત્મક. વાત અસંતુલિત થાય ત્યારે આયુર્વેદ શુષ્કતા, ગૅસ અને પેટ ફૂલવું, ચિંતાતુર મન અને હળવી, તૂટક ઊંઘનું વર્ણન કરે છે.',
+      tips: ['નિયમિત દિનચર્યા', 'ગરમ, તાજો રાંધેલો, થોડો સ્નિગ્ધ ખોરાક', 'ગરમ તેલથી અભ્યંગ (માલિશ)', 'વહેલું અને શાંતિથી સૂવું'],
+    },
+    pitta: {
+      name: 'પિત્ત',
+      elements: 'અગ્નિ + જળ',
+      text: 'તીક્ષ્ણ, એકાગ્ર અને ઉષ્ણ. પિત્ત અસંતુલિત થાય ત્યારે આયુર્વેદ એસિડિટી, ચીડિયાપણું, શરીરમાં વધુ ગરમી અને ચામડીની તકલીફોનું વર્ણન કરે છે.',
+      tips: ['ક્યારેય ભોજન ન છોડવું', 'ઠંડક આપતા ખોરાક અને પીણાં, બરફ જેવા ઠંડા નહીં', 'બપોરનો તડકો અને વધુ તીખું ટાળવું', 'સાંજે મનને શાંત કરવાનો સમય'],
+    },
+    kapha: {
+      name: 'કફ',
+      elements: 'પૃથ્વી + જળ',
+      text: 'સ્થિર, શાંત અને મજબૂત. કફ અસંતુલિત થાય ત્યારે આયુર્વેદ ભારેપણું, ધીમું પાચન, શરદી-કફ અને વજન વધવાની વૃત્તિનું વર્ણન કરે છે.',
+      tips: ['આદુ જેવા મસાલા સાથે હળવું, ગરમ ભોજન', 'રોજ સારી કસરત', 'વહેલા ઊઠવું, દિવસે ન સૂવું', 'નવી પ્રવૃત્તિ અને વૈવિધ્ય'],
+    },
   },
-  kapha: {
-    name: 'Kapha',
-    elements: 'Earth + Water',
-    text: 'Steady, calm and strong. When Kapha is out of balance, Ayurveda describes heaviness, slow digestion, congestion and a tendency to gain weight.',
-    tips: ['Light, warm meals with spices like ginger', 'Daily vigorous exercise', 'Rising early, avoiding daytime naps', 'Variety and new activity'],
-  },
+};
+const INFO = INFO_ALL[lang];
+const S = {
+  last: { en: 'See my result', gu: 'મારું પરિણામ જુઓ' },
+  next: { en: 'Next question', gu: 'આગળનો પ્રશ્ન' },
+  count: { en: (n, total) => `Question ${n} of ${total}`, gu: (n, total) => `${total} માંથી પ્રશ્ન ${n}` },
+  pick: { en: 'Please choose the answer that fits you best.', gu: 'કૃપા કરીને તમને સૌથી વધુ લાગુ પડતો જવાબ પસંદ કરો.' },
+  dual: { en: 'Two doshas seem almost equally active in you.', gu: 'તમારામાં બે દોષ લગભગ સરખા સક્રિય લાગે છે.' },
+  tips: { en: (n) => `Habits Ayurveda often suggests for ${n}`, gu: (n) => `${n} માટે આયુર્વેદ સૂચવે છે તેવી આદતો` },
 };
 
 const form = document.querySelector('[data-quiz]');
@@ -44,9 +77,9 @@ if (form) {
     qs.forEach((q, k) => q.classList.toggle('is-current', k === n));
     i = n;
     prev.disabled = n === 0;
-    next.querySelector('span').textContent = n === qs.length - 1 ? 'See my result' : 'Next question';
+    next.querySelector('span').textContent = n === qs.length - 1 ? t(S.last) : t(S.next);
     bar.style.width = `${(n / qs.length) * 100}%`;
-    countEl.textContent = `Question ${n + 1} of ${qs.length}`;
+    countEl.textContent = t(S.count)(n + 1, qs.length);
     error.textContent = '';
     if (focus) qs[n].querySelector('legend').focus();
   };
@@ -67,10 +100,10 @@ if (form) {
     result.querySelector('[data-r-dosha]').textContent = dual ? `${a.name}–${b.name}` : a.name;
     result.querySelector('[data-r-elements]').textContent = dual ? `${a.elements} · ${b.elements}` : a.elements;
     result.querySelector('[data-r-text]').textContent = dual
-      ? `Two doshas seem almost equally active in you. ${a.name}: ${a.text} ${b.name}: ${b.text}`
+      ? `${t(S.dual)} ${a.name}: ${a.text} ${b.name}: ${b.text}`
       : a.text;
-    result.querySelector('[data-r-tips]').innerHTML = a.tips.map((t) => `<li>${t}</li>`).join('');
-    result.querySelector('[data-r-tips-title]').textContent = `Habits Ayurveda often suggests for ${a.name}`;
+    result.querySelector('[data-r-tips]').innerHTML = a.tips.map((tip) => `<li>${tip}</li>`).join('');
+    result.querySelector('[data-r-tips-title]').textContent = t(S.tips)(a.name);
 
     Object.entries(score).forEach(([k, v]) => {
       const pct = Math.round((v / total) * 100);
@@ -89,7 +122,7 @@ if (form) {
 
   next.addEventListener('click', () => {
     if (!answered(qs[i])) {
-      error.textContent = 'Please choose the answer that fits you best.';
+      error.textContent = t(S.pick);
       qs[i].querySelector('input').focus();
       return;
     }

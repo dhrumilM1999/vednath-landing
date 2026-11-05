@@ -1,6 +1,7 @@
 // carousel.js — progressive enhancement over a native CSS scroll-snap strip.
 // Without JS: swipe/scroll works. With JS: prev/next buttons, mouse drag,
 // arrow keys, and a live "slide x of y" announcement.
+import { t } from './i18n.js';
 
 document.querySelectorAll('[data-carousel]').forEach((root) => {
   const vp = root.querySelector('.carousel__viewport');
@@ -20,7 +21,8 @@ document.querySelectorAll('[data-carousel]').forEach((root) => {
     const max = vp.scrollWidth - vp.clientWidth - 2;
     if (prev) prev.disabled = vp.scrollLeft <= 2;
     if (next) next.disabled = vp.scrollLeft >= max;
-    if (status) status.textContent = `Review ${Math.min(slides.length, current() + 1)} of ${slides.length}`;
+    const n = Math.min(slides.length, current() + 1);
+    if (status) status.textContent = t({ en: `Item ${n} of ${slides.length}`, gu: `${slides.length} માંથી ${n}` });
   };
 
   prev?.addEventListener('click', () => go(-1));

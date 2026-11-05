@@ -232,6 +232,40 @@
   .journey.is-pinned .journey__note { margin-top: var(--space-6); }
 }
 
+/* ---------- Therapies carousel ---------- */
+.therapy {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  background: var(--surface);
+  box-shadow: var(--shadow-paper);
+}
+.therapy__art {
+  aspect-ratio: 4 / 3;
+  border-radius: calc(var(--radius-l) - var(--space-3));
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  background: radial-gradient(circle at 50% 45%, var(--surface-raised), var(--bg-deep) 75%);
+  overflow: hidden;
+}
+.therapy__art svg { width: 78%; height: auto; overflow: visible; }
+.therapy:nth-child(5n + 2) .therapy__art { background: radial-gradient(circle at 50% 45%, #fbeedd, #efdcc2 75%); }
+.therapy:nth-child(5n + 3) .therapy__art { background: radial-gradient(circle at 50% 45%, #eef1e6, #dbe2d2 75%); }
+.therapy:nth-child(5n + 4) .therapy__art { background: radial-gradient(circle at 50% 45%, #f6ecdc, #e6d8bf 75%); }
+.therapy__body { display: grid; gap: var(--space-2); padding: 0 var(--space-2) var(--space-2); align-content: start; }
+.therapy__body h3 { font-size: var(--step-2); }
+.therapy__body p { font-size: var(--step--1); color: var(--ink-muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .therapy__art .drip { animation: drip-oil 2.6s var(--ease-in-out) infinite; transform-box: fill-box; transform-origin: top; }
+  .therapy:hover .therapy__art svg { transform: scale(1.04); transition: transform var(--dur-cinematic) var(--ease-out); }
+}
+@keyframes drip-oil { 0%, 20% { transform: translateY(-6px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+
 /* ---------- Doctor ---------- */
 .doctor { display: grid; gap: var(--space-8); align-items: center; }
 @media (min-width: 900px) { .doctor { grid-template-columns: 0.8fr 1.2fr; } }

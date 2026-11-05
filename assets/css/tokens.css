@@ -26,6 +26,23 @@
   font-style: normal;
   font-display: swap;
 }
+/* Gujarati: Hind Vadodara, Gujarati block only (unicode-range), so English pages never download it. */
+@font-face {
+  font-family: 'Hind Vadodara';
+  src: url('/assets/fonts/hind-vadodara-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0A80-0AFF, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: 'Hind Vadodara';
+  src: url('/assets/fonts/hind-vadodara-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0A80-0AFF, U+200C-200D, U+25CC;
+}
 /* Metric-matched fallbacks keep CLS ~0 while the web fonts swap in. */
 @font-face {
   font-family: 'Fraunces Fallback';

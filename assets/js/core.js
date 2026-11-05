@@ -82,7 +82,8 @@ document.querySelectorAll('.marquee__toggle').forEach((btn) => {
   btn.addEventListener('click', () => {
     const paused = m.classList.toggle('is-paused');
     btn.setAttribute('aria-pressed', String(paused));
-    btn.querySelector('span').textContent = paused ? 'Play' : 'Pause';
+    const gu = root.lang === 'gu';
+    btn.querySelector('span').textContent = paused ? (gu ? 'ચાલુ કરો' : 'Play') : (gu ? 'થોભાવો' : 'Pause');
     m.querySelector('.marquee__track').style.animationPlayState = paused ? 'paused' : '';
   });
 });

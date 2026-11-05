@@ -116,6 +116,35 @@ a {
 }
 a:hover { color: var(--saffron-text); }
 
+/* ---------- Gujarati typography ----------
+   Gujarati conjuncts break with negative letter-spacing, the script needs more
+   line-height, and Hind Vadodara has no italic: emphasis is shown with colour
+   and weight instead of slant. Latin characters fall back to Manrope. */
+:root:lang(gu) {
+  --font-display: 'Hind Vadodara', 'Manrope', 'Manrope Fallback', sans-serif;
+  --font-sans: 'Hind Vadodara', 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
+  --leading-body: 1.8;
+}
+:lang(gu) body { font-weight: 400; }
+:lang(gu) :is(h1, h2, h3, h4, .display, .h1, .h2, .h3, .h4, .bento__title, .marquee__item, .quote__text,
+  .journey__name, .stat__value, .cta-band__title, .result__dosha, .doctor__quote, .faq summary) {
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+:lang(gu) :is(.display, .cta-band__title, .result__dosha) { line-height: 1.18; }
+:lang(gu) .display { font-size: clamp(2.6rem, 1.4rem + 6vw, 7.5rem); }
+:lang(gu) :is(em, i) { font-style: normal; }
+:lang(gu) :is(.display, h1, h2, .h2, .cta-band__title) em { font-weight: 400; color: var(--saffron-text); }
+:lang(gu) .on-forest em { color: var(--gold-soft); }
+:lang(gu) :is(.eyebrow, .card__meta, .footer__title, .journey__kicker, .visit__list dt, .contact-list dt, .stat__label) {
+  letter-spacing: 0.02em;
+}
+:lang(gu) .marquee__item:nth-child(even), :lang(gu) .doctor__quote, :lang(gu) .result__dosha,
+:lang(gu) .card__num, :lang(gu) .steps li::before { font-style: normal; }
+[lang='en'] { font-family: 'Manrope', 'Manrope Fallback', sans-serif; }
+:is(h1, h2, h3, .display) [lang='en'] { font-family: inherit; }
+
 /* ---------- Focus & accessibility ---------- */
 :focus-visible {
   outline: 2px solid var(--saffron-text);
