@@ -14,13 +14,18 @@
     "vendor": "node scripts/vendor.mjs"
   },
   "devDependencies": {
+    "@fontsource-variable/anek-latin": "^5.3.0",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/hind": "^5.3.0",
     "@fontsource/hind-vadodara": "^5.3.0",
     "esbuild": "^0.28.2",
     "gsap": "^3.15.1",
+    "lighthouse": "12.8.2",
     "lightningcss": "^1.33.0",
-    "sharp": "^0.35.5"
+    "playwright": "1.56.1",
+    "sharp": "^0.35.5",
+    "subset-font": "^2.9.0"
   }
 }

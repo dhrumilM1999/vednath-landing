@@ -6,3 +6,6 @@ Thumbs.db
 *.log
 .env
 docs/lighthouse/*.tmp
+
+# Client brand source files (kept locally; web copies live in assets/brand/)
+Vednath Ayurved Logo Treadmark/

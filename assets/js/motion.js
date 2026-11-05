@@ -74,20 +74,49 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
 
   /* ---- Hero: the sun sinks and the headline lifts as you leave ---- */
   const hero = document.querySelector('.hero');
-  if (hero) {
-    gsap.to('.hero__sun', {
-      yPercent: 18,
-      scale: 1.08,
+  const sun = hero?.querySelector('.hero__sun, .sun');
+  if (sun) {
+    // v1: soft sun drifts; v2: the logo sun "sets" as you scroll past the hero
+    gsap.to(sun, {
+      yPercent: sun.classList.contains('sun') ? 30 : 18,
       ease: 'none',
       scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
     });
-    gsap.to('.hero__content', {
+  }
+  const heroContent = hero?.querySelector('.hero__content');
+  if (heroContent) {
+    gsap.to(heroContent, {
       yPercent: -10,
       opacity: 0.2,
       ease: 'none',
       scrollTrigger: { trigger: hero, start: 'center center', end: 'bottom top', scrub: true },
     });
   }
+});
+
+/* ---- v2: horizontal Panchakarma strip, pinned and scrubbed on large screens ----
+   Without this (phones, reduced motion, no JS) the strip is a native swipe row. */
+mm.add('(prefers-reduced-motion: no-preference) and (min-width: 1000px)', () => {
+  const hs = document.querySelector('[data-hscroll]');
+  if (!hs) return;
+  const track = hs.querySelector('.hscroll__track');
+  const section = hs.closest('section') || hs;
+  hs.classList.add('is-pinned');
+  const distance = () => Math.max(0, track.scrollWidth - document.documentElement.clientWidth);
+  const tween = gsap.to(track, {
+    x: () => -distance(),
+    ease: 'none',
+    scrollTrigger: {
+      trigger: section,
+      start: 'top top',
+      end: () => `+=${distance()}`,
+      pin: true,
+      scrub: 0.6,
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+    },
+  });
+  return () => { tween.scrollTrigger?.kill(); gsap.set(track, { clearProps: 'x' }); hs.classList.remove('is-pinned'); };
 });
 
 /* ---- Pinned Panchakarma Journey (tablet/desktop: pinned + scrubbed) ---- */

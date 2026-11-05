@@ -32,6 +32,16 @@ jobs:
         run: node scripts/build.mjs
         env:
           BASE: /${{ github.event.repository.name }}/
+      # Keep the first design online for comparison at /<repo>/v1/ (built from the v1 tag)
+      - uses: actions/checkout@v4
+        with:
+          ref: v1
+          path: v1src
+      - name: Build v1 into dist/v1
+        working-directory: v1src
+        run: npm ci --no-audit --no-fund && node scripts/build.mjs && cp -r dist ../dist/v1
+        env:
+          BASE: /${{ github.event.repository.name }}/v1/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
