@@ -6,7 +6,9 @@ import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = resolve(fileURLToPath(new URL('..', import.meta.url)));
+// Optional 2nd argument: a folder to serve instead of the source (e.g. `dist` to test the build).
+const PROJECT = resolve(fileURLToPath(new URL('..', import.meta.url)));
+const ROOT = process.argv[3] ? resolve(PROJECT, process.argv[3]) : PROJECT;
 const PORT = Number(process.argv[2] || process.env.PORT || 5173);
 const BLOCKED = ['/node_modules', '/scripts', '/partials', '/docs/source', '/.git'];
 

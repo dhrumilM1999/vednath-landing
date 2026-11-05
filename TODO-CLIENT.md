@@ -42,6 +42,15 @@ Status: ☐ open · ☑ answered
 - ☐ **Permission from reviewers** whose words are quoted (Raj P., Ankit G., Arvind P.). Names are shortened until consent is given. *(§8, §16)*
 - ☐ Permission to embed or link the Instagram reels. *(§12.3)*
 
+## Gujarati version
+- ☐ **Proofreading of all `/gu/` pages** by the doctor or a native speaker, especially the medical terms and the 3 blog articles.
+- ☐ Every `{{TODO}}` above also appears on the matching Gujarati page. Send answers once and both languages are updated.
+
+## Needs an account or access (not clinic data)
+- ☐ Analytics: choose a privacy-friendly tool (e.g. Plausible or Umami) and create the account.
+- ☐ Custom domain: DNS access for vednathayurved.com to point it at the new site.
+- ☐ Instagram reels on the blog: the clinic's permission to embed them.
+
 ## Legal (please have an advisor check)
 - ☐ Medical disclaimer wording (footer and /disclaimer). *(§16)*
 - ☐ Privacy policy wording under the DPDP Act, 2023 (booking form opens WhatsApp; nothing is stored). *(§16)*

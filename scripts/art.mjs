@@ -84,7 +84,7 @@ await writeFile('assets/svg/mandala.svg', svg);
 const base = sharp(Buffer.from(svg), { density: 144 });
 for (const w of [520, 820, 1200]) {
   const buf = await base.clone().resize(w, w).png().toBuffer();
-  await sharp(buf).avif({ quality: 50, effort: 6 }).toFile(`assets/img/hero/mandala-${w}.avif`);
+  await sharp(buf).avif({ quality: 38, effort: 7 }).toFile(`assets/img/hero/mandala-${w}.avif`);
   await sharp(buf).webp({ quality: 74, alphaQuality: 80 }).toFile(`assets/img/hero/mandala-${w}.webp`);
 }
 console.log('mandala + posters written');

@@ -7,12 +7,13 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/tokens.css">
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="stylesheet" href="/assets/css/components.css">
 <link rel="stylesheet" href="/assets/css/pages.css">
 <link rel="stylesheet" href="/assets/css/home.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(d,r){r.classList.add('js');function on(){r.classList.add('fonts-loaded');try{sessionStorage.setItem('vf','1')}catch(e){}}try{if(sessionStorage.getItem('vf'))return on()}catch(e){}if(!d.fonts)return on();var t=setTimeout(on,3000);Promise.all([d.fonts.load('300 1em Fraunces'),d.fonts.load('400 1em Fraunces'),d.fonts.load('italic 300 1em Fraunces'),d.fonts.load('500 1em Manrope')]).then(function(){clearTimeout(t);on()},on)})(document,document.documentElement)</script>
+<noscript><style>:root{--font-display:'Fraunces','Fraunces Fallback',Georgia,serif;--font-sans:'Manrope','Manrope Fallback',system-ui,sans-serif}</style></noscript>
 <script type="module" src="/assets/js/core.js"></script>

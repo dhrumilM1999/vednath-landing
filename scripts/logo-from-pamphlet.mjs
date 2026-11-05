@@ -28,6 +28,10 @@ await img.clone().png({ compressionLevel: 9, palette: true }).toFile('assets/img
 await img.clone().webp({ quality: 88, alphaQuality: 90 }).toFile('assets/img/logo.webp');
 const meta = await sharp('assets/img/logo.png').metadata();
 console.log('logo', meta.width, 'x', meta.height);
+// Right-sized versions for the header (~100–117px wide) and footer (~143px), at 2x.
+for (const w of [240, 320]) {
+  await sharp('assets/img/logo.png').resize({ width: w }).webp({ quality: 70, alphaQuality: 70, effort: 6 }).toFile(`assets/img/logo-${w}.webp`);
+}
 
 // Favicon set from the sun emblem (left part of the mark).
 const emblem = await sharp(SRC).extract({ left: 58, top: 30, width: 118, height: 98 }).toBuffer();

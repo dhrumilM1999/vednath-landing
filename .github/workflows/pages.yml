@@ -25,7 +25,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # No npm install needed: GSAP and fonts are already vendored in /assets.
+          cache: npm
+      # Build tools only (lightningcss, esbuild). GSAP and fonts are already vendored in /assets.
+      - run: npm ci --no-audit --no-fund
       - name: Build for the /vednath-landing/ sub-path
         run: node scripts/build.mjs
         env:

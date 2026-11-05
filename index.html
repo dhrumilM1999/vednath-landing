@@ -28,14 +28,15 @@
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/fraunces-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/tokens.css">
 <link rel="stylesheet" href="/assets/css/base.css">
 <link rel="stylesheet" href="/assets/css/components.css">
 <link rel="stylesheet" href="/assets/css/pages.css">
 <link rel="stylesheet" href="/assets/css/home.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(d,r){r.classList.add('js');function on(){r.classList.add('fonts-loaded');try{sessionStorage.setItem('vf','1')}catch(e){}}try{if(sessionStorage.getItem('vf'))return on()}catch(e){}if(!d.fonts)return on();var t=setTimeout(on,3000);Promise.all([d.fonts.load('300 1em Fraunces'),d.fonts.load('400 1em Fraunces'),d.fonts.load('italic 300 1em Fraunces'),d.fonts.load('500 1em Manrope')]).then(function(){clearTimeout(t);on()},on)})(document,document.documentElement)</script>
+<noscript><style>:root{--font-display:'Fraunces','Fraunces Fallback',Georgia,serif;--font-sans:'Manrope','Manrope Fallback',system-ui,sans-serif}</style></noscript>
 <script type="module" src="/assets/js/core.js"></script>
 <!-- /@head -->
 
@@ -93,7 +94,7 @@
   <div class="container site-header__inner">
     <a class="brand" href="/" aria-label="Vednath Ayurved, home">
       <picture>
-        <source srcset="/assets/img/logo.webp" type="image/webp">
+        <source srcset="/assets/img/logo-240.webp" type="image/webp">
         <img src="/assets/img/logo.png" width="591" height="264" alt="Vednath Ayurved">
       </picture>
     </a>
@@ -321,7 +322,7 @@
     </div>
     <div class="carousel" data-carousel>
       <div class="carousel__viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Local therapies">
-        <article class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="1 of 5">
+        <div class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="1 of 5">
           <div class="therapy__art" aria-hidden="true">
             <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M70 160c4-34 10-58 22-74 10-14 12-30 8-44-4-16 6-30 26-32s38 12 36 34c-1 12-8 20-8 30 0 8 6 12 6 18s-6 8-12 8c2 8 0 14-8 16"/>
@@ -332,8 +333,8 @@
             </svg>
           </div>
           <div class="therapy__body"><p class="card__meta">Neck</p><h3>Greeva Basti</h3><p>Warm medicated oil held over the neck in a dough ring, for cervical pain, stiffness and spondylosis.</p></div>
-        </article>
-        <article class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="2 of 5">
+        </div>
+        <div class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="2 of 5">
           <div class="therapy__art" aria-hidden="true">
             <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M30 120c30-4 60-10 84-30 6-5 16-5 22 0 22 22 40 44 50 66"/>
@@ -344,8 +345,8 @@
             </svg>
           </div>
           <div class="therapy__body"><p class="card__meta">Knees</p><h3>Janu Basti</h3><p>Warm oil held over the knees, for osteoarthritis and knee degeneration.</p></div>
-        </article>
-        <article class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="3 of 5">
+        </div>
+        <div class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="3 of 5">
           <div class="therapy__art" aria-hidden="true">
             <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="40" cy="108" r="14"/>
@@ -358,8 +359,8 @@
             </svg>
           </div>
           <div class="therapy__body"><p class="card__meta">Lower back</p><h3>Kati Basti</h3><p>Warm oil pooled over the lower back, for sciatica, lumbar spondylosis and disc problems.</p></div>
-        </article>
-        <article class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="4 of 5">
+        </div>
+        <div class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="4 of 5">
           <div class="therapy__art" aria-hidden="true">
             <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M60 96c30-34 90-34 120 0-30 34-90 34-120 0Z"/>
@@ -370,8 +371,8 @@
             </svg>
           </div>
           <div class="therapy__body"><p class="card__meta">Eyes</p><h3>Netra Tarpan</h3><p>Ghee eye therapy for dryness and eye fatigue.</p></div>
-        </article>
-        <article class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="5 of 5">
+        </div>
+        <div class="carousel__slide therapy" role="group" aria-roledescription="slide" aria-label="5 of 5">
           <div class="therapy__art" aria-hidden="true">
             <svg viewBox="0 0 240 180" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M40 130c30-20 60-24 90-16s54 4 72-10"/>
@@ -380,7 +381,7 @@
             </svg>
           </div>
           <div class="therapy__body"><p class="card__meta">Whole body</p><h3>Udvartana</h3><p>Herbal powder massage for exfoliation, circulation and fat reduction.</p></div>
-        </article>
+        </div>
       </div>
       <div class="container cluster" style="justify-content:space-between">
         <a class="link-arrow" href="/services/panchakarma/">Explore Panchakarma</a>
@@ -549,27 +550,27 @@
     </div>
     <div class="carousel" data-carousel>
       <div class="carousel__viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Patient reviews">
-        <figure class="carousel__slide quote" role="group" aria-roledescription="slide" aria-label="1 of 6">
+        <figure class="carousel__slide quote" aria-label="1 of 6">
           <div class="quote__stars" aria-label="5 stars">★★★★★</div>
           <blockquote class="quote__text">very deep knowledge of ayurved. Also very kind.</blockquote>
           <figcaption class="quote__who"><strong>Raj P.</strong>Google review</figcaption>
         </figure>
-        <figure class="carousel__slide quote" role="group" aria-roledescription="slide" aria-label="2 of 6">
+        <figure class="carousel__slide quote" aria-label="2 of 6">
           <div class="quote__stars" aria-label="5 stars">★★★★★</div>
           <blockquote class="quote__text">Best online counseling and treatment by dr grishm shingala</blockquote>
           <figcaption class="quote__who"><strong>Ankit G.</strong>Google review · Local Guide</figcaption>
         </figure>
-        <figure class="carousel__slide quote" role="group" aria-roledescription="slide" aria-label="3 of 6">
+        <figure class="carousel__slide quote" aria-label="3 of 6">
           <div class="quote__stars" aria-label="5 stars">★★★★★</div>
           <blockquote class="quote__text">Best ayurved treatment in Gujarat....I get online consultation...great experience</blockquote>
           <figcaption class="quote__who"><strong>Google review</strong>Highlighted by Google</figcaption>
         </figure>
-        <figure class="carousel__slide quote" role="group" aria-roledescription="slide" aria-label="4 of 6">
+        <figure class="carousel__slide quote" aria-label="4 of 6">
           <div class="quote__stars" aria-label="5 stars">★★★★★</div>
           <blockquote class="quote__text">Adajan best ayurvedic treatment place</blockquote>
           <figcaption class="quote__who"><strong>Google review</strong>Highlighted by Google</figcaption>
         </figure>
-        <figure class="carousel__slide quote" role="group" aria-roledescription="slide" aria-label="5 of 6">
+        <figure class="carousel__slide quote" aria-label="5 of 6">
           <div class="quote__stars" aria-label="Recommends">♥</div>
           <blockquote class="quote__text">Dr. Greeshm’s treatment is very good. I had a very good experience.</blockquote>
           <figcaption class="quote__who"><strong>Arvind P.</strong>Facebook review · translated from Gujarati</figcaption>
@@ -690,7 +691,7 @@
     <div class="footer__grid">
       <div class="footer__brand">
         <picture>
-          <source srcset="/assets/img/logo.webp" type="image/webp">
+          <source srcset="/assets/img/logo-320.webp" type="image/webp">
           <img src="/assets/img/logo.png" width="591" height="264" alt="Vednath Ayurved" loading="lazy">
         </picture>
         <p class="footer__motto" lang="sa">इदं न मम <span class="small muted" lang="en">· Idam na mama, “this is not mine”</span></p>

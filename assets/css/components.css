@@ -133,7 +133,7 @@
   transition: opacity var(--dur-ui) var(--ease-out);
 }
 .site-header.is-scrolled::before,
-.site-header:has(.nav.is-open)::before { opacity: 1; }
+.site-header.menu-open::before { opacity: 1; }
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -309,8 +309,7 @@
 
 /* ---------- Note / disclaimer callout ---------- */
 .note {
-  display: flex;
-  gap: var(--space-3);
+  display: block; /* not flex: notes contain inline text + <strong>/<a>, which flex would split into columns */
   padding: var(--space-4) var(--space-5);
   border-left: 3px solid var(--gold);
   border-radius: 0 var(--radius-m) var(--radius-m) 0;

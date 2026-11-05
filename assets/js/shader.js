@@ -3,9 +3,18 @@
 // Renders at reduced resolution, pauses when offscreen or the tab is hidden.
 
 const canvas = document.querySelector('[data-shader]');
-const gl = canvas?.getContext('webgl', { alpha: true, antialias: false, powerPreference: 'low-power', premultipliedAlpha: false });
+const gl = canvas?.getContext('webgl', { alpha: true, antialias: false, powerPreference: 'low-power', premultipliedAlpha: false, failIfMajorPerformanceCaveat: true });
 
-if (gl) {
+// Without a real GPU (SwiftShader, llvmpipe, Microsoft Basic Render), WebGL runs on the
+// CPU and would steal the main thread, so we skip it and keep the CSS sun.
+const softwareGL = (() => {
+  if (!gl) return true;
+  const ext = gl.getExtension('WEBGL_debug_renderer_info');
+  const renderer = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : '';
+  return /swiftshader|llvmpipe|software|basic render/i.test(renderer);
+})();
+
+if (gl && !softwareGL) {
   const vs = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
   // Warm, slow domain-warped noise in saffron/gold tones, faded to transparent at the edges.
   const fs = `precision mediump float;

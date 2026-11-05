@@ -5,16 +5,25 @@
    current site's sage (#4C6353). Light theme only.
    ========================================================================== */
 
+/* Fraunces as static instances (300, 400, italic 300): measurably cheaper for slow
+   mobile CPUs to decode than the variable files, and smaller (59 KB vs 81 KB). */
 @font-face {
   font-family: 'Fraunces';
-  src: url('/assets/fonts/fraunces-opsz.woff2') format('woff2-variations');
-  font-weight: 100 900;
+  src: url('/assets/fonts/fraunces-300.woff2') format('woff2');
+  font-weight: 100 350;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Fraunces';
-  src: url('/assets/fonts/fraunces-opsz-italic.woff2') format('woff2-variations');
+  src: url('/assets/fonts/fraunces-400.woff2') format('woff2');
+  font-weight: 351 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/assets/fonts/fraunces-300-italic.woff2') format('woff2');
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
@@ -43,20 +52,22 @@
   font-display: swap;
   unicode-range: U+0A80-0AFF, U+200C-200D, U+25CC;
 }
-/* Metric-matched fallbacks keep CLS ~0 while the web fonts swap in. */
+/* Metric-matched fallbacks keep CLS ~0 while the web fonts swap in.
+   Measured (scripts/font-metrics.mjs): Fraunces (wght axis) is ~3% wider than Georgia,
+   Manrope ~4% wider than Arial. Line wrapping must match, or the hero headline reflows. */
 @font-face {
   font-family: 'Fraunces Fallback';
   src: local('Georgia'), local('Times New Roman');
-  size-adjust: 104%;
-  ascent-override: 94%;
-  descent-override: 24%;
+  size-adjust: 103.5%;
+  ascent-override: 95%;
+  descent-override: 25%;
   line-gap-override: 0%;
 }
 @font-face {
   font-family: 'Manrope Fallback';
   src: local('Arial'), local('Helvetica');
-  size-adjust: 103%;
-  ascent-override: 103%;
+  size-adjust: 104%;
+  ascent-override: 102%;
   descent-override: 29%;
   line-gap-override: 0%;
 }
@@ -94,8 +105,11 @@
   --on-forest-muted: #c9d1bf;
 
   /* ---- Typography ---- */
-  --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, serif;
-  --font-sans: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
+  /* First render uses the metric-matched fallbacks only. The inline head script loads
+     all three web fonts and adds .fonts-loaded when they're ready, so the page swaps
+     ONCE (one relayout) instead of once per font file. Cached fonts → class added at once. */
+  --font-display: 'Fraunces Fallback', Georgia, serif;
+  --font-sans: 'Manrope Fallback', system-ui, sans-serif;
 
   /* Fluid type scale: ~1.2 ratio at 360px → ~1.333 at 1440px */
   --step--1: clamp(0.833rem, 0.81rem + 0.1vw, 0.889rem);
@@ -157,4 +171,10 @@
   --z-mobile-bar: 60;
   --z-cursor: 90;
   --z-skip: 100;
+}
+
+/* Web fonts switch on together (see the inline script in partials/head.html). */
+.fonts-loaded {
+  --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, serif;
+  --font-sans: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
 }

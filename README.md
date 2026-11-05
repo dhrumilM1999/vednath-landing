@@ -15,6 +15,38 @@ npm run dev          # http://localhost:5173/
 
 Use `npm run dev`, not XAMPP's `/vednath-ayurved/` sub-folder. The site uses root-relative links (`/services/panchakarma/`), so it needs to be served from `/`, as it will be in production.
 
+## Languages
+
+- English at `/`, Gujarati at `/gu/` with the same slugs (`/services/panchakarma/` ↔ `/gu/services/panchakarma/`).
+- The header language switch and `hreflang` tags are filled in automatically by `npm run partials`.
+- Gujarati pages use `partials/gu/*.html` and `assets/css/gu.css` (Hind Vadodara, Gujarati typography rules).
+- JS strings (form errors, quiz results) live in each module, keyed `{ en, gu }` (see `assets/js/i18n.js`).
+- When you add or change an English page, update its `/gu/` twin too.
+
+## Build, preview, verify
+
+```bash
+npm run build      # dist/: CSS inlined + minified, JS minified, breadcrumb/BlogPosting JSON-LD added
+npm run preview    # build, then serve dist/ at http://localhost:5180/
+npm run check      # links, duplicate IDs, one <h1>, titles/descriptions, colour contrast
+```
+
+To run the full verification (screenshots, link crawl, reduced motion, keyboard, Lighthouse), install the test-only tools first:
+
+```bash
+npm i --no-save playwright@1.56.1 lighthouse@12.8.2
+```
+
+```bash
+npx playwright install chromium
+```
+
+```bash
+npm run build && npm run verify
+```
+
+Reports go to `docs/lighthouse/` and screenshots to `docs/screenshots/`.
+
 ## Scripts
 
 | Command | What it does |
@@ -65,4 +97,6 @@ styleguide/                     living design-system page (noindex)
 
 ## Deploy
 
-The folder is static, but don't deploy `node_modules/`, `scripts/`, `docs/` or `partials/`. Netlify/Vercel config with headers will be added in the SEO and performance step.
+Every push to `main` runs `.github/workflows/pages.yml`, which builds with `BASE=/vednath-landing/` and publishes to GitHub Pages: https://dhrumilm1999.github.io/vednath-landing/
+
+For the real domain (Netlify, Vercel or GitHub Pages with a custom domain), run `npm run build` with no `BASE` and publish `dist/`.

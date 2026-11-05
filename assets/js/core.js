@@ -12,7 +12,6 @@ const lowEnd =
   (navigator.hardwareConcurrency || 4) < 6 ||
   (navigator.deviceMemory || 4) < 4;
 
-root.classList.toggle('motion-ok', motionOK);
 
 const idle = (fn) =>
   'requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200);
@@ -36,6 +35,7 @@ if (toggle && nav) {
   const setOpen = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
+    header?.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     if (open) nav.querySelector('a')?.focus();
   };
@@ -124,7 +124,8 @@ document.querySelectorAll('[data-map-src]').forEach((link) => {
 });
 
 /* ---------- Hero: start ambient motion only after load ---------- */
-afterLoad(() => root.classList.add('is-loaded'));
+// Scoped to the hero (not <html>) so adding the class doesn't restyle the whole page.
+afterLoad(() => document.querySelector('.hero')?.classList.add('is-loaded'));
 
 /* ---------- Lazy enhancements ---------- */
 if (document.querySelector('[data-carousel]')) {
@@ -142,8 +143,25 @@ if (document.querySelector('[data-inquiry]')) import('./inquiry.js');
 if (document.querySelector('[data-filter]')) import('./filter.js');
 if (document.querySelector('[data-quiz]')) import('./quiz.js');
 
+// GSAP (~50 KB gz) is only needed for effects below the fold, so it loads on the
+// visitor's first scroll / touch / key press instead of competing with first paint.
+const onFirst = (events, fn) => {
+  let done = false;
+  const run = () => {
+    if (done) return;
+    done = true;
+    events.forEach((e) => removeEventListener(e, run, true));
+    fn();
+  };
+  events.forEach((e) => addEventListener(e, run, { capture: true, passive: true }));
+  if (scrollY > 0) run(); // reloaded mid-page
+};
+
 if (motionOK) {
-  afterLoad(() => import('./motion.js'));
-  if (finePointer) afterLoad(() => import('./pointer.js'));
-  if (!lowEnd && document.querySelector('[data-shader]')) afterLoad(() => import('./shader.js'));
+  onFirst(['scroll', 'wheel', 'touchstart', 'pointerdown', 'keydown'], () => import('./motion.js'));
+  if (finePointer) onFirst(['pointermove'], () => import('./pointer.js'));
+  // WebGL only on large, fine-pointer screens; phones keep the (free) CSS sun.
+  // shader.js also bails out if the GPU is a software renderer.
+  const bigScreen = matchMedia('(min-width: 1024px) and (pointer: fine)').matches;
+  if (!lowEnd && bigScreen && document.querySelector('[data-shader]')) afterLoad(() => import('./shader.js'));
 }

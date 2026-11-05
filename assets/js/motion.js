@@ -134,5 +134,11 @@ mm.add('(prefers-reduced-motion: no-preference) and (min-width: 760px)', () => {
   return () => journey.classList.remove('is-pinned');
 });
 
-// Fonts swapping in can shift layout; recalc trigger positions once they're ready.
+// Fonts swapping in, and content-visibility sections rendering for the first time,
+// change the page height: recalc trigger positions (debounced) whenever <main> resizes.
 document.fonts?.ready.then(() => ScrollTrigger.refresh());
+let refreshTimer;
+new ResizeObserver(() => {
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+}).observe(document.querySelector('main'));
