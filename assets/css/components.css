@@ -689,6 +689,23 @@ textarea.field__input { min-height: 7rem; resize: vertical; }
 .choice:has(input:checked) { border-color: var(--forest); background: rgb(31 74 58 / 0.06); }
 .choice input { accent-color: var(--forest); width: 1.1rem; height: 1.1rem; }
 
+/* ---------- Map facade (click-to-load Google Map) ---------- */
+.map-facade, .map-frame {
+  display: block;
+  position: relative;
+  min-height: 22rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+.map-facade { background: var(--surface); color: var(--ink); text-decoration: none; }
+.map-facade svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-facade__cta { position: absolute; left: 50%; bottom: var(--space-5); translate: -50% 0; white-space: nowrap; }
+.map-facade:hover { color: var(--ink); }
+.map-frame { border: 0; }
+
 /* ---------- Custom cursor (desktop, fine pointer only; injected by JS) ---------- */
 .cursor {
   position: fixed;

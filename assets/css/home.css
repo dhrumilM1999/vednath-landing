@@ -335,28 +335,3 @@
   text-transform: uppercase;
   color: var(--saffron-text);
 }
-.map-facade, .map-frame {
-  display: block;
-  position: relative;
-  min-height: 22rem;
-  width: 100%;
-  height: 100%;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-l);
-  overflow: hidden;
-}
-.map-facade {
-  background: var(--surface);
-  color: var(--ink);
-  text-decoration: none;
-}
-.map-facade svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.map-facade__cta {
-  position: absolute;
-  left: 50%;
-  bottom: var(--space-5);
-  translate: -50% 0;
-  white-space: nowrap;
-}
-.map-facade:hover { color: var(--ink); }
-.map-frame { border: 0; }

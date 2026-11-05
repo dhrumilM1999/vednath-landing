@@ -135,6 +135,12 @@ if (document.querySelector('[data-carousel]')) {
     : start();
 }
 
+// Page features: loaded only on pages that have them, as soon as the DOM is ready
+// (these are interactive, so they shouldn't wait for idle).
+if (document.querySelector('[data-inquiry]')) import('./inquiry.js');
+if (document.querySelector('[data-filter]')) import('./filter.js');
+if (document.querySelector('[data-quiz]')) import('./quiz.js');
+
 if (motionOK) {
   afterLoad(() => import('./motion.js'));
   if (finePointer) afterLoad(() => import('./pointer.js'));

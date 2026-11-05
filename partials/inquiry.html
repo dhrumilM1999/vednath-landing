@@ -1,0 +1,76 @@
+<form class="inquiry stack" style="--stack:var(--space-5)" data-inquiry action="https://wa.me/919925604218" method="get" aria-labelledby="inq-title" aria-describedby="inq-intro">
+  <div class="stack" style="--stack:var(--space-2)">
+    <h2 class="h3" id="inq-title">Book a consultation</h2>
+    <p class="muted small" id="inq-intro">Fill in a few details and we’ll open WhatsApp with your message ready to send. Fields marked <span class="req" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+  </div>
+
+  <div class="inquiry__summary" role="alert" tabindex="-1" hidden data-summary></div>
+
+  <div class="inquiry__grid">
+    <div class="field">
+      <label class="field__label" for="inq-name">Full name <span class="req" aria-hidden="true">*</span></label>
+      <input class="field__input" id="inq-name" type="text" autocomplete="name" required minlength="2" maxlength="60" aria-describedby="inq-name-err">
+      <p class="field__error" id="inq-name-err" data-error></p>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="inq-phone">Mobile number <span class="req" aria-hidden="true">*</span></label>
+      <input class="field__input" id="inq-phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="98765 43210" aria-describedby="inq-phone-hint inq-phone-err">
+      <p class="field__hint" id="inq-phone-hint">10-digit Indian mobile number.</p>
+      <p class="field__error" id="inq-phone-err" data-error></p>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="inq-date">Preferred date</label>
+      <input class="field__input" id="inq-date" type="date" aria-describedby="inq-date-hint inq-date-err">
+      <p class="field__hint" id="inq-date-hint">Optional. The clinic will confirm the time.</p>
+      <p class="field__error" id="inq-date-err" data-error></p>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="inq-service">I’m interested in</label>
+      <select class="field__input" id="inq-service">
+        <option>General consultation</option>
+        <option>Panchakarma</option>
+        <option>Garbh Sanskar</option>
+        <option>Suvarnaprashan</option>
+        <option>Diet &amp; lifestyle</option>
+        <option>Not sure yet</option>
+      </select>
+    </div>
+
+    <fieldset class="choice-group inquiry__full" aria-describedby="inq-mode-err">
+      <legend>Consultation type <span class="req" aria-hidden="true">*</span></legend>
+      <div class="choice-row">
+        <label class="choice"><input type="radio" id="inq-mode-in" name="inq-mode" value="In person at Adajan" required> In person, at Adajan</label>
+        <label class="choice"><input type="radio" id="inq-mode-online" name="inq-mode" value="Online"> Online</label>
+      </div>
+      <p class="field__error" id="inq-mode-err" data-error></p>
+    </fieldset>
+
+    <div class="field inquiry__full">
+      <label class="field__label" for="inq-concern">Your concern, in a line or two</label>
+      <textarea class="field__input" id="inq-concern" name="text" maxlength="300" rows="3" aria-describedby="inq-concern-hint inq-concern-err"></textarea>
+      <p class="field__hint" id="inq-concern-hint">Optional, up to 300 characters. Please don’t share reports or detailed medical history here. The doctor will ask during your consultation.</p>
+      <p class="field__error" id="inq-concern-err" data-error></p>
+    </div>
+
+    <div class="field inquiry__full">
+      <label class="check"><input type="checkbox" id="inq-consent" required aria-describedby="inq-consent-err"> <span>I understand this opens WhatsApp to send my details to Vednath Ayurved. Nothing is stored on this website. <a href="/privacy/">Privacy</a></span></label>
+      <p class="field__error" id="inq-consent-err" data-error></p>
+    </div>
+  </div>
+
+  <div class="inquiry__actions">
+    <button class="btn btn--whatsapp" type="submit" data-magnetic>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5Z"/></svg>
+      <span>Send on WhatsApp</span>
+    </button>
+    <a class="link-arrow" href="tel:+919925604218">Or call +91 99256 04218</a>
+  </div>
+
+  <div class="inquiry__done" role="status" hidden data-done>
+    <strong>WhatsApp should now be open with your message.</strong>
+    <span class="small">Didn’t open? <a data-done-link href="https://wa.me/919925604218" rel="noopener" target="_blank">Open WhatsApp</a> or call <a href="tel:+919925604218">+91 99256 04218</a>.</span>
+  </div>
+</form>
