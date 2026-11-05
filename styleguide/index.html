@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Styleguide | Vednath Ayurved</title>
+  <meta name="description" content="Design system for the Vednath Ayurved website: colours, typography, buttons, cards and motion.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/assets/fonts/fraunces-opsz.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <style>
+    .sg-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
+    .swatch { border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; background: var(--surface); font-size: var(--step--1); }
+    .swatch__chip { height: 5.5rem; }
+    .swatch__meta { padding: var(--space-3); display: grid; gap: 2px; }
+    .swatch__meta code { color: var(--ink-muted); font-size: 0.8em; }
+    .type-row { display: grid; gap: var(--space-2); padding-block: var(--space-5); border-top: 1px solid var(--line); }
+    .type-row code { font-size: var(--step--1); color: var(--saffron-text); }
+    .sg-section { padding-block: var(--space-8); border-top: 1px solid var(--line-strong); }
+    .sg-motion { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+    .sg-motion__demo { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+    .sg-motion__demo span { display: block; height: 100%; width: 30%; background: var(--saffron); border-radius: 3px; }
+    @media (prefers-reduced-motion: no-preference) {
+      .sg-motion__demo span { animation: sg-slide var(--d) var(--e) infinite alternate; }
+    }
+    @keyframes sg-slide { to { transform: translateX(233%); } }
+    .space-bar { height: 1rem; background: var(--sage-soft); border-radius: 2px; }
+  </style>
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="module" src="/assets/js/core.js"></script>
+</head>
+<body>
+<!-- @header -->
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="Vednath Ayurved, home">
+      <picture>
+        <source srcset="/assets/img/logo.webp" type="image/webp">
+        <img src="/assets/img/logo.png" width="591" height="264" alt="Vednath Ayurved">
+      </picture>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span>Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+        <li><a class="nav__link" data-nav="/about/" href="/about/">About</a></li>
+        <li><a class="nav__link" data-nav="/doctor/" href="/doctor/">Doctor</a></li>
+        <li><a class="nav__link" data-nav="/services/" href="/services/">Services</a></li>
+        <li><a class="nav__link" data-nav="/conditions/" href="/conditions/">Conditions</a></li>
+        <li><a class="nav__link" data-nav="/prakriti-quiz/" href="/prakriti-quiz/">Prakriti Quiz</a></li>
+        <li><a class="nav__link" data-nav="/reviews/" href="/reviews/">Reviews</a></li>
+        <li><a class="nav__link" data-nav="/blog/" href="/blog/">Blog</a></li>
+        <li><a class="nav__link" data-nav="/contact/" href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small header-cta" data-magnetic="0.25" href="https://wa.me/919925604218?text=Hello%20Vednath%20Ayurved%2C%20I%20would%20like%20to%20book%20a%20consultation." rel="noopener" target="_blank">
+      <span>Book on WhatsApp</span>
+    </a>
+  </div>
+</header>
+<!-- /@header -->
+
+<main id="main" class="container" style="padding-block:var(--space-9)">
+  <header class="stack" style="--stack:var(--space-4)">
+    <p class="eyebrow">Design system · v0.1</p>
+    <h1 class="display">Styleguide</h1>
+    <p class="lead">“Modern Ayurvedic Luxury”: handmade paper, forest greens and the saffron sun from the Vednath logo. Light theme only. Every text colour pair below meets WCAG AA (4.5:1).</p>
+  </header>
+
+  <!-- Colours -->
+  <section class="sg-section" aria-labelledby="sg-colour">
+    <h2 id="sg-colour" class="h3" style="margin-bottom:var(--space-6)">Colour</h2>
+    <div class="sg-grid">
+      <div class="swatch"><div class="swatch__chip" style="background:var(--bg)"></div><div class="swatch__meta"><strong>--bg</strong><code>#F4EDE0 · paper</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--bg-deep)"></div><div class="swatch__meta"><strong>--bg-deep</strong><code>#EBE2D0 · section alt</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--surface)"></div><div class="swatch__meta"><strong>--surface</strong><code>#FBF6EC · cards</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--line-strong)"></div><div class="swatch__meta"><strong>--line-strong</strong><code>#BFAE8F · hairlines</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--ink)"></div><div class="swatch__meta"><strong>--ink</strong><code>#1C2620 · 14.6:1</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--ink-muted)"></div><div class="swatch__meta"><strong>--ink-muted</strong><code>#4A5A4F · 6.6:1</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--forest)"></div><div class="swatch__meta"><strong>--forest</strong><code>#1F4A3A · pamphlet band</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--forest-deep)"></div><div class="swatch__meta"><strong>--forest-deep</strong><code>#143329 · CTA band</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--sage)"></div><div class="swatch__meta"><strong>--sage</strong><code>#4C6353 · current brand</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--saffron)"></div><div class="swatch__meta"><strong>--saffron</strong><code>#D9731F · decorative only</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--saffron-text)"></div><div class="swatch__meta"><strong>--saffron-text</strong><code>#9A4A0E · 5.9:1 text</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--kumkum)"></div><div class="swatch__meta"><strong>--kumkum</strong><code>#8E2A24 · errors, accents</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--gold)"></div><div class="swatch__meta"><strong>--gold</strong><code>#B8913A · lines only</code></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:var(--gold-soft)"></div><div class="swatch__meta"><strong>--gold-soft</strong><code>#E3CF9C · on forest</code></div></div>
+    </div>
+  </section>
+
+  <!-- Type -->
+  <section class="sg-section" aria-labelledby="sg-type">
+    <h2 id="sg-type" class="h3" style="margin-bottom:var(--space-6)">Typography</h2>
+    <p class="muted" style="margin-bottom:var(--space-5)">Fraunces (variable serif, optical sizes) for display · Manrope (variable sans) for text. Self-hosted, Latin subset, <code>font-display: swap</code>, with metric-matched fallbacks.</p>
+    <div class="type-row"><code>.display · --step-display</code><p class="display">Healing at the <em>root.</em></p></div>
+    <div class="type-row"><code>h1 · --step-5</code><p class="h1">Panchakarma, planned for you</p></div>
+    <div class="type-row"><code>h2 · --step-4</code><p class="h2">Care for every <em>stage</em> of life</p></div>
+    <div class="type-row"><code>h3 · --step-2</code><p class="h3">Nadi &amp; Prakriti assessment</p></div>
+    <div class="type-row"><code>h4 · --step-1</code><p class="h4">Follow-ups, in person or online</p></div>
+    <div class="type-row"><code>.lead · --step-1</code><p class="lead">A personalised plan of herbal medicine, diet, lifestyle and Panchakarma.</p></div>
+    <div class="type-row"><code>body · --step-0</code><p>Every plan follows classical texts and traditional practice, and starts by understanding you: your pulse, your constitution and your daily life.</p></div>
+    <div class="type-row"><code>.eyebrow</code><p class="eyebrow">Signature therapy</p></div>
+    <div class="type-row"><code>.todo (missing client data)</code><p>Hours: <span class="todo">{{TODO: confirm clinic hours}}</span></p></div>
+  </section>
+
+  <!-- Buttons -->
+  <section class="sg-section" aria-labelledby="sg-buttons">
+    <h2 id="sg-buttons" class="h3" style="margin-bottom:var(--space-6)">Buttons</h2>
+    <p class="muted" style="margin-bottom:var(--space-5)">Hover or focus for the liquid fill. On desktop the <code>data-magnetic</code> ones follow your cursor; on touch, tap for a ripple.</p>
+    <div class="cluster">
+      <a class="btn" data-magnetic href="#sg-buttons"><span>Primary</span></a>
+      <a class="btn btn--whatsapp" data-magnetic href="#sg-buttons"><span>WhatsApp</span></a>
+      <a class="btn btn--ghost" data-magnetic href="#sg-buttons"><span>Ghost</span></a>
+      <button class="btn btn--small" type="button"><span>Small</span></button>
+      <a class="link-arrow" href="#sg-buttons">Text link</a>
+    </div>
+    <div class="cta-band on-forest" style="margin-top:var(--space-6);border-radius:var(--radius-l);padding:var(--space-7) var(--space-5)">
+      <div class="cluster" style="justify-content:center">
+        <a class="btn btn--light" data-magnetic href="#sg-buttons"><span>Light</span></a>
+        <a class="btn btn--outline-light" data-magnetic href="#sg-buttons"><span>Outline light</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards & chips -->
+  <section class="sg-section" aria-labelledby="sg-cards">
+    <h2 id="sg-cards" class="h3" style="margin-bottom:var(--space-6)">Cards, chips &amp; notes</h2>
+    <div class="bento" style="margin-bottom:var(--space-6)">
+      <a class="bento__card bento__card--hero" data-tilt href="#sg-cards"><span class="bento__go" aria-hidden="true">↗</span><span class="card__meta">Bento hero</span><span class="bento__title">Tilt + spotlight</span><span class="bento__text">Move your cursor over this card (desktop).</span></a>
+      <a class="bento__card bento__card--tall" data-tilt href="#sg-cards"><span class="bento__go" aria-hidden="true">↗</span><span class="card__meta">Tall</span><span class="bento__title">Garbh Sanskar</span></a>
+      <a class="bento__card bento__card--a" data-tilt href="#sg-cards"><span class="card__meta">Small</span><span class="bento__title">Card A</span></a>
+      <a class="bento__card bento__card--b" data-tilt href="#sg-cards"><span class="card__meta">Small</span><span class="bento__title">Card B</span></a>
+      <a class="bento__card bento__card--c" data-tilt href="#sg-cards"><span class="card__meta">Small</span><span class="bento__title">Card C</span></a>
+    </div>
+    <div class="cluster" style="margin-bottom:var(--space-5)">
+      <span class="chip">Snehana</span><span class="chip">Swedana</span><span class="chip chip--forest">BAMS (GAU)</span>
+    </div>
+    <p class="note">The doctor decides your Panchakarma plan after assessment. Notes like this carry disclaimers and caveats.</p>
+    <div class="placeholder-media" style="margin-top:var(--space-5);max-width:24rem"><span class="todo">{{TODO: real clinic photo}}</span></div>
+  </section>
+
+  <!-- Forms -->
+  <section class="sg-section" aria-labelledby="sg-forms">
+    <h2 id="sg-forms" class="h3" style="margin-bottom:var(--space-6)">Form fields</h2>
+    <form class="stack" style="--stack:var(--space-5);max-width:32rem" novalidate onsubmit="return false">
+      <div class="field">
+        <label class="field__label" for="sg-name">Full name</label>
+        <input class="field__input" id="sg-name" name="name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="field__label" for="sg-phone">Phone</label>
+        <input class="field__input" id="sg-phone" name="phone" type="tel" inputmode="tel" aria-invalid="true" aria-describedby="sg-phone-err">
+        <p class="field__error" id="sg-phone-err">Please enter a 10-digit mobile number.</p>
+      </div>
+      <fieldset class="choice-group">
+        <legend>Consultation type</legend>
+        <label class="choice"><input type="radio" name="sg-type" checked> In person, at Adajan</label>
+        <label class="choice"><input type="radio" name="sg-type"> Online</label>
+      </fieldset>
+    </form>
+  </section>
+
+  <!-- Spacing -->
+  <section class="sg-section" aria-labelledby="sg-space">
+    <h2 id="sg-space" class="h3" style="margin-bottom:var(--space-6)">Spacing (4px base)</h2>
+    <div class="stack" style="--stack:var(--space-2)">
+      <div style="display:flex;gap:1rem;align-items:center"><code style="width:6rem">--space-2</code><div class="space-bar" style="width:var(--space-2)"></div></div>
+      <div style="display:flex;gap:1rem;align-items:center"><code style="width:6rem">--space-4</code><div class="space-bar" style="width:var(--space-4)"></div></div>
+      <div style="display:flex;gap:1rem;align-items:center"><code style="width:6rem">--space-6</code><div class="space-bar" style="width:var(--space-6)"></div></div>
+      <div style="display:flex;gap:1rem;align-items:center"><code style="width:6rem">--space-8</code><div class="space-bar" style="width:var(--space-8)"></div></div>
+      <div style="display:flex;gap:1rem;align-items:center"><code style="width:6rem">--space-10</code><div class="space-bar" style="width:var(--space-10)"></div></div>
+    </div>
+  </section>
+
+  <!-- Motion -->
+  <section class="sg-section" aria-labelledby="sg-motion">
+    <h2 id="sg-motion" class="h3" style="margin-bottom:var(--space-6)">Motion</h2>
+    <p class="muted" style="margin-bottom:var(--space-5)">Only <code>transform</code>, <code>opacity</code> and <code>filter</code> are animated. With reduced motion turned on, these demos stand still.</p>
+    <div class="sg-motion">
+      <div><code>--dur-micro 120ms · ease-out</code><div class="sg-motion__demo" style="--d:var(--dur-micro);--e:var(--ease-out)"><span></span></div></div>
+      <div><code>--dur-ui 240ms · ease-out</code><div class="sg-motion__demo" style="--d:var(--dur-ui);--e:var(--ease-out)"><span></span></div></div>
+      <div><code>--dur-reveal 600ms · ease-out</code><div class="sg-motion__demo" style="--d:var(--dur-reveal);--e:var(--ease-out)"><span></span></div></div>
+      <div><code>--dur-cinematic 1200ms · in-out</code><div class="sg-motion__demo" style="--d:var(--dur-cinematic);--e:var(--ease-in-out)"><span></span></div></div>
+      <div><code>spring · 900ms</code><div class="sg-motion__demo" style="--d:900ms;--e:var(--ease-spring)"><span></span></div></div>
+    </div>
+    <h3 class="h4" data-split style="margin-top:var(--space-7)">This heading uses SplitText when it scrolls into view.</h3>
+    <div style="display:grid;gap:var(--space-4);grid-template-columns:repeat(3,1fr);margin-top:var(--space-6)">
+      <div class="card" data-reveal style="--i:0">Reveal 1</div>
+      <div class="card" data-reveal style="--i:1">Reveal 2</div>
+      <div class="card" data-reveal style="--i:2">Reveal 3</div>
+    </div>
+  </section>
+</main>
+
+<!-- @footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <picture>
+          <source srcset="/assets/img/logo.webp" type="image/webp">
+          <img src="/assets/img/logo.png" width="591" height="264" alt="Vednath Ayurved" loading="lazy">
+        </picture>
+        <p class="footer__motto" lang="sa">इदं न मम <span class="small muted" lang="en">· Idam na mama, “this is not mine”</span></p>
+        <p class="muted" style="margin-top:var(--space-3)">Ayurveda &amp; Panchakarma Hospital, Adajan, Surat.</p>
+      </div>
+      <div>
+        <h2 class="footer__title">Care</h2>
+        <ul class="footer__list">
+          <li><a href="/services/consultation/">Consultation</a></li>
+          <li><a href="/services/panchakarma/">Panchakarma</a></li>
+          <li><a href="/services/garbh-sanskar/">Garbh Sanskar</a></li>
+          <li><a href="/services/suvarnaprashan/">Suvarnaprashan</a></li>
+          <li><a href="/services/diet-lifestyle/">Diet &amp; Lifestyle</a></li>
+          <li><a href="/conditions/">Conditions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Clinic</h2>
+        <ul class="footer__list">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/doctor/">Dr. Grishm Shingala</a></li>
+          <li><a href="/prakriti-quiz/">Prakriti Quiz</a></li>
+          <li><a href="/reviews/">Reviews</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/gallery/">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__title">Visit</h2>
+        <address class="muted" style="font-style:normal">
+          Shop No. 7–8, Devi Plaza, 3rd Floor, Anand Mahal Road, Opp. Shree Ram Petrol Pump, Adajan, Surat, Gujarat 395009
+        </address>
+        <ul class="footer__list" style="margin-top:var(--space-4)">
+          <li><a href="tel:+919925604218">+91 99256 04218</a></li>
+          <li><a href="mailto:vednathayurved@gmail.com">vednathayurved@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/vednathayurved/" rel="noopener" target="_blank">Instagram</a> · <a href="https://www.facebook.com/vednathayurved/" rel="noopener" target="_blank">Facebook</a> · <a href="https://maps.app.goo.gl/X1JmmZFWkUDVWXL87" rel="noopener" target="_blank">Google</a></li>
+        </ul>
+        <p class="muted" style="margin-top:var(--space-3)">Hours: <span class="todo">{{TODO: confirm clinic hours}}</span></p>
+      </div>
+    </div>
+    <div class="footer__disclaimer">
+      <p><strong>Medical disclaimer.</strong> The information on this website is for general education and does not replace a consultation with a qualified doctor. Ayurvedic treatment is planned individually after assessment, and results vary from person to person. In an emergency, contact your nearest hospital. <a href="/disclaimer/">Read the full disclaimer</a>.</p>
+      <p>© <span data-year>2026</span> Vednath Ayurved · <a href="/privacy/">Privacy</a> · <a href="/disclaimer/">Disclaimer</a></p>
+    </div>
+  </div>
+</footer>
+<!-- /@footer -->
+<!-- @mobile-bar -->
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a class="mobile-bar__link" href="tel:+919925604218">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+    <span>Call</span>
+  </a>
+  <a class="mobile-bar__link mobile-bar__link--primary" href="https://wa.me/919925604218?text=Hello%20Vednath%20Ayurved%2C%20I%20would%20like%20to%20book%20a%20consultation." rel="noopener" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5Z"/><path d="M9 9.5c.3 2 2.4 4.2 4.6 4.6l1-1.1 1.7.8"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a class="mobile-bar__link" href="https://www.google.com/maps/dir/?api=1&amp;destination=21.1958745,72.797695" rel="noopener" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+    <span>Directions</span>
+  </a>
+</nav>
+<!-- /@mobile-bar -->
+</body>
+</html>

@@ -1,0 +1,143 @@
+/* ==========================================================================
+   Vednath Ayurved — Design tokens
+   "Modern Ayurvedic Luxury": handmade paper, forest greens, saffron sun.
+   Colours derived from the official pamphlet + logo, the clinic board and the
+   current site's sage (#4C6353). Light theme only.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/assets/fonts/fraunces-opsz.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Fraunces';
+  src: url('/assets/fonts/fraunces-opsz-italic.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('/assets/fonts/manrope.woff2') format('woff2-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+/* Metric-matched fallbacks keep CLS ~0 while the web fonts swap in. */
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 104%;
+  ascent-override: 94%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Manrope Fallback';
+  src: local('Arial'), local('Helvetica');
+  size-adjust: 103%;
+  ascent-override: 103%;
+  descent-override: 29%;
+  line-gap-override: 0%;
+}
+
+:root {
+  color-scheme: light;
+
+  /* ---- Colour: surfaces ---- */
+  --bg: #f4ede0;            /* handmade paper */
+  --bg-deep: #ebe2d0;       /* folded paper / section alt */
+  --surface: #fbf6ec;       /* cards */
+  --surface-raised: #fffaf2;
+  --line: #d9cdb6;          /* hairlines on paper */
+  --line-strong: #bfae8f;
+
+  /* ---- Colour: ink (all ≥ 4.5:1 on --bg and --surface) ---- */
+  --ink: #1c2620;           /* 13.4:1 on --bg */
+  --ink-soft: #33433a;      /* 9.0:1 */
+  --ink-muted: #4a5a4f;     /* 6.3:1 (5.7:1 on --bg-deep) */
+
+  /* ---- Colour: brand ---- */
+  --forest: #1f4a3a;        /* pamphlet band — 9.4:1 on --bg */
+  --forest-deep: #143329;   /* CTA band background */
+  --sage: #4c6353;          /* current brand sage — 5.6:1 */
+  --sage-soft: #a8b8a6;
+  --saffron: #d9731f;       /* logo sun — decorative / large text only */
+  --saffron-text: #9a4a0e;  /* saffron safe for body text — 5.9:1 */
+  --saffron-glow: #f2a65a;
+  --kumkum: #8e2a24;        /* logo red / board maroon — 7.7:1 */
+  --gold: #b8913a;          /* decorative lines only */
+  --gold-soft: #e3cf9c;
+
+  /* On dark (forest) surfaces */
+  --on-forest: #f4ede0;     /* 11.8:1 on --forest-deep */
+  --on-forest-muted: #c9d1bf;
+
+  /* ---- Typography ---- */
+  --font-display: 'Fraunces', 'Fraunces Fallback', Georgia, serif;
+  --font-sans: 'Manrope', 'Manrope Fallback', system-ui, sans-serif;
+
+  /* Fluid type scale: ~1.2 ratio at 360px → ~1.333 at 1440px */
+  --step--1: clamp(0.833rem, 0.81rem + 0.1vw, 0.889rem);
+  --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.12rem + 0.36vw, 1.5rem);
+  --step-2: clamp(1.44rem, 1.3rem + 0.64vw, 2rem);
+  --step-3: clamp(1.728rem, 1.49rem + 1.06vw, 2.667rem);
+  --step-4: clamp(2.074rem, 1.69rem + 1.7vw, 3.556rem);
+  --step-5: clamp(2.488rem, 1.88rem + 2.7vw, 4.741rem);
+  --step-display: clamp(3rem, 1.6rem + 7vw, 9.5rem);
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.2;
+  --leading-body: 1.65;
+  --tracking-caps: 0.16em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+  --space-11: 12rem;   /* 192 */
+  --section-y: clamp(var(--space-8), 4rem + 6vw, var(--space-11));
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --max: 1320px;
+  --max-prose: 68ch;
+
+  /* ---- Shape & depth: "handmade paper" shadows ---- */
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 28px;
+  --radius-pill: 999px;
+  --shadow-paper: 0 1px 0 rgb(255 255 255 / 0.6) inset,
+    0 1px 2px rgb(60 42 20 / 0.06), 0 8px 24px -12px rgb(60 42 20 / 0.18);
+  --shadow-lift: 0 1px 0 rgb(255 255 255 / 0.7) inset,
+    0 2px 6px rgb(60 42 20 / 0.08), 0 28px 60px -24px rgb(60 42 20 / 0.32);
+
+  /* ---- Motion ---- */
+  --dur-micro: 120ms;
+  --dur-ui: 240ms;
+  --dur-reveal: 600ms;
+  --dur-cinematic: 1200ms;
+  --dur-ambient: 60s;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);       /* expo-out: arrivals */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);   /* scene changes */
+  --ease-spring: linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%,
+    1.017 19.4%, 1.067, 1.099 24.3%, 1.108 26%, 1.1 28.3%, 1.042 35.1%, 1.012 40.1%,
+    0.995 46.1%, 0.999 61.1%, 1);
+
+  /* ---- Layers ---- */
+  --z-grain: 1;
+  --z-header: 50;
+  --z-mobile-bar: 60;
+  --z-cursor: 90;
+  --z-skip: 100;
+}
