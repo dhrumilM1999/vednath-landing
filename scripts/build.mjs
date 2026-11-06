@@ -116,11 +116,11 @@ for await (const file of walk(OUT)) {
     const lang = (html.match(/<html lang="([^"]+)"/) || [])[1] || 'en';
 
     // 1. Inline + minify CSS
-    const hrefs = [...html.matchAll(/<link rel="stylesheet" href="(\/assets\/css\/[^"]+)">\s*/g)].map((m) => m[1]);
+    const hrefs = [...html.matchAll(/<link rel="stylesheet" href="(\/assets\/(?:css|v2)\/[^"]+)">\s*/g)].map((m) => m[1]);
     if (hrefs.length) {
       const css = await inlineCss(hrefs);
       let done = false;
-      html = html.replace(/<link rel="stylesheet" href="\/assets\/css\/[^"]+">\s*/g, () => {
+      html = html.replace(/<link rel="stylesheet" href="\/assets\/(?:css|v2)\/[^"]+">\s*/g, () => {
         if (done) return '';
         done = true;
         return `<style>${css}</style>\n`;
@@ -159,5 +159,6 @@ for await (const file of walk(OUT)) {
 
 // Source CSS is inlined into every page; the standalone files aren't needed in dist.
 await rm(join(OUT, 'assets', 'css'), { recursive: true, force: true });
+await rm(join(OUT, 'assets', 'v2'), { recursive: true, force: true });
 await writeFile(join(OUT, '.nojekyll'), '');
 console.log(`Built dist/ (base ${BASE}): ${pages} pages, ${jsFiles} JS modules minified, CSS inlined (${[...cssCache.values()].map((c) => (c.length / 1024).toFixed(1) + ' KB').join(', ')}).`);
