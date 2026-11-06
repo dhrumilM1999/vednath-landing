@@ -2,13 +2,13 @@
   {
     "page": "/",
     "formFactor": "mobile",
-    "performance": 77,
+    "performance": 91,
     "accessibility": 100,
     "bestPractices": 100,
     "seo": 100,
-    "lcp": "2.9 s",
+    "lcp": "3.0 s",
     "cls": "0",
-    "tbt": "630 ms"
+    "tbt": "0 ms"
   },
   {
     "page": "/",
@@ -19,18 +19,18 @@
     "seo": 100,
     "lcp": "0.6 s",
     "cls": "0",
-    "tbt": "20 ms"
+    "tbt": "0 ms"
   },
   {
     "page": "/gu/",
     "formFactor": "mobile",
-    "performance": 92,
+    "performance": 78,
     "accessibility": 100,
     "bestPractices": 100,
     "seo": 100,
-    "lcp": "2.7 s",
+    "lcp": "3.2 s",
     "cls": "0",
-    "tbt": "130 ms"
+    "tbt": "490 ms"
   },
   {
     "page": "/gu/",
@@ -40,19 +40,19 @@
     "bestPractices": 100,
     "seo": 100,
     "lcp": "0.6 s",
-    "cls": "0",
+    "cls": "0.001",
     "tbt": "0 ms"
   },
   {
     "page": "/contact/",
     "formFactor": "mobile",
-    "performance": 93,
+    "performance": 95,
     "accessibility": 100,
     "bestPractices": 100,
     "seo": 100,
     "lcp": "2.6 s",
     "cls": "0",
-    "tbt": "180 ms"
+    "tbt": "60 ms"
   },
   {
     "page": "/contact/",
@@ -61,20 +61,20 @@
     "accessibility": 100,
     "bestPractices": 100,
     "seo": 100,
-    "lcp": "0.6 s",
-    "cls": "0.003",
+    "lcp": "0.5 s",
+    "cls": "0",
     "tbt": "0 ms"
   },
   {
     "page": "/services/panchakarma/",
     "formFactor": "mobile",
-    "performance": 91,
+    "performance": 96,
     "accessibility": 100,
     "bestPractices": 100,
     "seo": 100,
     "lcp": "2.4 s",
     "cls": "0",
-    "tbt": "270 ms"
+    "tbt": "0 ms"
   },
   {
     "page": "/services/panchakarma/",

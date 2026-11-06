@@ -103,7 +103,7 @@ console.log('\n3. Reduced motion');
     marquee: getComputedStyle(document.querySelector('.marquee__track')).animationName,
     hidden: [...document.querySelectorAll('[data-reveal]')].filter((e) => getComputedStyle(e).opacity !== '1').length,
     shader: !!document.querySelector('.hero__shader.is-live'),
-    pinned: document.querySelector('[data-journey]').classList.contains('is-pinned'),
+    pinned: !!document.querySelector('[data-journey].is-pinned, [data-hscroll].is-pinned'),
   }));
   r.gsap ? fail('GSAP loaded under reduced motion') : ok('GSAP not loaded');
   r.marquee !== 'none' ? fail('marquee still animating') : ok('marquee static');

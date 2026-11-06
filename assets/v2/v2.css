@@ -9,7 +9,6 @@
 @font-face { font-family: 'Hind'; src: url('/assets/fonts/hind-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Hind'; src: url('/assets/fonts/hind-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
 @font-face { font-family: 'Hind Vadodara'; src: url('/assets/fonts/hind-vadodara-400.woff2') format('woff2'); font-weight: 400; font-display: swap; unicode-range: U+0A80-0AFF, U+200C-200D, U+25CC; }
-@font-face { font-family: 'Hind Vadodara'; src: url('/assets/fonts/hind-vadodara-600.woff2') format('woff2'); font-weight: 600; font-display: swap; unicode-range: U+0A80-0AFF, U+200C-200D, U+25CC; }
 @font-face { font-family: 'Hind Vadodara'; src: url('/assets/fonts/hind-vadodara-700.woff2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0A80-0AFF, U+200C-200D, U+25CC; }
 /* Metric-matched fallbacks (scripts/font-metrics.mjs) */
 @font-face { font-family: 'Anek Fallback'; src: local('Arial Narrow'), local('Arial'); size-adjust: 88%; ascent-override: 105%; descent-override: 30%; line-gap-override: 0%; }

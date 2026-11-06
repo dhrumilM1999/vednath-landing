@@ -50,7 +50,7 @@ const partials = { en: await load(PARTIALS), gu: await load(join(PARTIALS, 'gu')
 let changed = 0;
 for (const file of htmlFiles(ROOT)) {
   const url = urlFor(file);
-  if (url === '/404.html') continue; // site-wide 404 is handled separately (bilingual text, English chrome)
+  // 404.html: bilingual text, English chrome; its language switch points at /gu/
   const lang = url.startsWith('/gu/') ? 'gu' : 'en';
   const enPath = lang === 'gu' ? url.replace(/^\/gu\//, '/') : url;
   const guPath = lang === 'gu' ? url : `/gu${url}`;

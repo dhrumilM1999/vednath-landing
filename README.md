@@ -1,5 +1,9 @@
 # Vednath Ayurved: website
 
+**Design v2, "The Vaidya's Almanac"** (live). Colours from the official logo, Anek condensed + Hind / Hind Vadodara, printed-matter components. The first design (v1) is kept at the `v1` git tag/branch and deployed at `/v1/` for comparison.
+
+Styles: `assets/v2/v2.css` (tokens, base, header/footer), `home.css` (home sections), `pages.css` (inner pages; also maps the old v1 class and variable names), `gu.css` (Gujarati pages). Partials: `partials/v2-*.html` and `partials/gu/v2-*.html`. Fonts: `node scripts/fonts.mjs`. Logo + icons: `node scripts/brand.mjs` (reads the client logo folder, which is not committed).
+
 A static website for **Vednath Ayurved – Ayurveda & Panchakarma Hospital, Adajan, Surat**.
 It is hand-written HTML, modern CSS and vanilla JS (ES modules), with GSAP for scroll motion. There is no framework and no build output: **the repository folder is the deployable site.**
 

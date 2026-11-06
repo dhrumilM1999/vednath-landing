@@ -39,7 +39,7 @@ Status: ☐ open · ☑ answered
 - ☐ Shloka attribution (Charaka or Sushruta) before any verse is published. Kept **off** the site. *(§5.5)*
 
 ## Reviews and media
-- ☐ **Permission from reviewers** whose words are quoted (Raj P., Ankit G., Arvind P.). Names are shortened until consent is given. *(§8, §16)*
+- ☑ Google/Facebook reviews: shown with names as they appear publicly, confirmed by the website owner (Nov 2026). Medical claims ("100% cured", "completely relief") are left out. Re-confirm with Dr. Grishm if any reviewer asks to be removed.
 - ☐ Permission to embed or link the Instagram reels. *(§12.3)*
 
 ## Gujarati version
