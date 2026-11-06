@@ -1,7 +1,14 @@
-/* v2: Gujarati pages only. Hind Vadodara carries everything; condensed Anek only for
-   numerals and Latin words. Gujarati needs more line-height and no negative tracking. */
+/* v2: Gujarati pages only. On these pages the display face IS Hind Vadodara (Anek has no
+   Gujarati glyphs); condensed Anek is kept only for numerals and short Latin bits.
+   Gujarati needs more line-height and no negative tracking. */
+:root {
+  --f-num: 'Anek Cond', 'Anek Fallback', 'Arial Narrow', sans-serif;
+  --f-display: var(--f-gu);
+}
 body { font-family: var(--f-gu); line-height: 1.75; }
-h1, h2, h3, h4, .mega, .hero__title, .index__name, .stage h3, .doc__name, .footer__big, .poster__en, .doc__quote blockquote, .ticker__item {
+h1, h2, h3, h4, .mega, .display, .h1, .h2, .h3, .h4, .hero__title, .index__name, .stage h3, .doc__name,
+.footer__big, .poster__en, .doc__quote blockquote, .ticker__item, .card__title, .bento__title,
+.quiz__q legend, .faq summary, .def-table th, .doctor__quote, .result__dosha {
   font-family: var(--f-gu);
   font-weight: 700;
   letter-spacing: 0;
@@ -9,10 +16,11 @@ h1, h2, h3, h4, .mega, .hero__title, .index__name, .stage h3, .doc__name, .foote
 }
 .hero__title { font-size: clamp(3rem, 1.4rem + 7.6vw, 9rem); line-height: 1.12; }
 .hero__title .line { padding-bottom: 0.12em; }
-.mega { line-height: 1.1; }
+.mega, .display, .page-hero .display { line-height: 1.12; }
 h2 { font-size: clamp(2.1rem, 1.4rem + 2.8vw, 4rem); }
 .index__name { font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.8rem); }
 .index__name span, .stage h3 span, .doc__name span { font-family: var(--f-text); font-weight: 600; }
-.kicker, .sec-head__name, .label, .footer h2, .postcard dt { letter-spacing: 0.02em; text-transform: none; }
-.strip dd, .stage__no, .score__big, .index__no, .sec-head__no, .rx-steps li::before { font-family: var(--f-display); }
+.kicker, .sec-head__name, .label, .footer h2, .postcard dt, .eyebrow, .card__meta, .contact-list dt { letter-spacing: 0.02em; text-transform: none; }
+/* numerals stay in the condensed poster face */
+.strip dd, .stage__no, .score__big, .index__no, .sec-head__no, .rx-steps li::before, .card__num, .stat__value, .result__dosha:lang(en) { font-family: var(--f-num); }
 [lang='en'] { font-family: var(--f-text); }
